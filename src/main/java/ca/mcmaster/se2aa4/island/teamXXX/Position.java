@@ -18,7 +18,12 @@ public class Position {
     public int getY() {
         return y;
     }
-
+    public void setX(int x) {
+        this.x = x;
+    }
+    public void setY(int y) {
+        this.y = y;
+    }
     public Position getPosition() {
         return new Position(x, y); // avoid leaky abstraction by returning a copy of the position
     }

@@ -16,6 +16,7 @@ public class HeadingCommand implements Command {
     }
 
     public void applyCommandResult(Drone drone, CommandResult result) {
-        drone.decreaseBattery()
+        drone.decreaseBattery(result.getCost());
+        drone.changeHeading(result.getDirection());
     }
 }

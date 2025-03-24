@@ -27,4 +27,25 @@ public class Drone {
     public void decreaseBattery(int cost) {
         this.battery -= cost;
     }
+    public void changeHeading(Direction heading) {
+        switch (direction) {
+            case NORTH:
+                position.setY(position.getY() - 3);
+                position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? -1 : 1));
+                break;
+            case EAST:
+                position.setX(position.getX() + 3);
+                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
+                break;
+            case SOUTH:
+                position.setY(position.getY() + 3);
+                position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? -1 : 1));
+                break;
+            case WEST:
+                position.setX(position.getX() - 3);
+                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
+                break;
+        }
+        direction = heading;
+    }
 }
