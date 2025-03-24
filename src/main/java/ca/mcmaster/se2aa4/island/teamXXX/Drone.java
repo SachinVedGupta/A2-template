@@ -2,9 +2,11 @@ package ca.mcmaster.se2aa4.island.teamXXX;
 
 public class Drone {
     private Direction direction;
+    private int battery;
 
-    public Drone() {
-        this.direction = Direction.EAST;
+    public Drone(Direction direction, int battery) {
+        this.direction = direction;
+        this.battery = battery;
     }
     public void setDirection (Direction direction) {
         this.direction = direction;
