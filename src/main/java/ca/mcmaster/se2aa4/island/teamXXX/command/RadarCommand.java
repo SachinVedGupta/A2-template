@@ -3,14 +3,14 @@ package ca.mcmaster.se2aa4.island.teamXXX.command;
 import org.json.JSONObject;
 
 import ca.mcmaster.se2aa4.island.teamXXX.*;
-import eu.ace_design.island.game.actions.Heading;
+import ca.mcmaster.se2aa4.island.teamXXX.Direction;
 
 public class RadarCommand implements Command {
     
-    private Heading heading;
+    private Direction direction;
     
-    public RadarCommand(Heading heading) {
-        this.heading = heading;
+    public RadarCommand(Direction direction) {
+        this.direction = direction;
     }
     
     @Override
@@ -29,7 +29,7 @@ public class RadarCommand implements Command {
         JSONObject request = new JSONObject();
         request.put("action", "echo");
         JSONObject parameters = new JSONObject();
-        parameters.put("direction", heading.toString());
+        parameters.put("direction", direction.toString());
         request.put("parameters", parameters);
         return request;
     }
