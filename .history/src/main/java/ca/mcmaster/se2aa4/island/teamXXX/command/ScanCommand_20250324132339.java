@@ -4,25 +4,24 @@ import ca.mcmaster.se2aa4.island.teamXXX.*;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 
-public class StopCommand implements Command {
-
+public class ScanCommand implements Command {
+    
     // default constructor will automatically be present
-
     @Override
     public CommandOption getCommandType() {
-        return CommandOption.STOP;
+        return CommandOption.SCAN;
     }
 
     @Override
     public void applyCommandResult(Drone drone, CommandResult result) {
-        drone.decreaseBattery(result.getCost());
+        drone.decreaseBattery(result.getCost());        
     }
 
     @Override
     public JSONObject createRequestJSON() {
         JSONObject request = new JSONObject();
-        request.put("action", "stop");
+        request.put("command", "scan");
         return request;
     }
-
+  
 }

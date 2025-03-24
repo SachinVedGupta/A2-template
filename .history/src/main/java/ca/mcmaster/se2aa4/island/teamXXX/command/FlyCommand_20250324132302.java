@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class FlyCommand implements Command {
 
-  // default constructor will automatically be present
+  // default consu
   
   public JSONObject createRequestJSON() {
     JSONObject request = new JSONObject();

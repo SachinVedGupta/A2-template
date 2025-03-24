@@ -57,12 +57,10 @@ public class Drone {
         }
         else if (dir == Direction.EAST) {
             this.setPosition(new Position(curr_pos.getX() + 3, curr_pos.getY()));
-        }
-        else if (dir == Direction.SOUTH) {
+        } else if (dir == Direction.SOUTH) {
             this.setPosition(new Position(curr_pos.getX(), curr_pos.getY() - 3));
-        } 
-        else if (dir == Direction.WEST) {
+          } else if (dir == Direction.WEST) {
             this.setPosition(new Position(curr_pos.getX() - 3, curr_pos.getY()));
-        }
+          }
     }
 }

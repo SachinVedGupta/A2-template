@@ -12,7 +12,7 @@ public class HeadingCommand implements Command {
     public HeadingCommand(Direction direction) {
         this.direction = direction;
     }
-
+    
     public CommandOption getCommandType() {
         return CommandOption.HEADING;
     }
@@ -20,9 +20,6 @@ public class HeadingCommand implements Command {
     public JSONObject createRequestJSON() {
         JSONObject request = new JSONObject();
         request.put("action", "heading");
-        JSONObject parameters = new JSONObject();
-        parameters.put("direction", direction.toString());
-        request.put("parameters", parameters);
         return request;
     }
 

@@ -31,11 +31,11 @@ public class Drone {
         switch (direction) {
             case NORTH:
                 position.setY(position.getY() - 3);
-                position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? -1 : 1));
+                position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? - 1 : 1));
                 break;
             case EAST:
                 position.setX(position.getX() + 3);
-                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
+                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? - 1 : 1));
                 break;
             case SOUTH:
                 position.setY(position.getY() + 3);
@@ -47,22 +47,5 @@ public class Drone {
                 break;
         }
         direction = heading;
-    }
-    public void fly() {
-        Position curr_pos = this.getPosition();
-        Direction dir = this.getDirection();
-
-        if (dir == Direction.NORTH) {
-            this.setPosition(new Position(curr_pos.getX(), curr_pos.getY() + 3));
-        }
-        else if (dir == Direction.EAST) {
-            this.setPosition(new Position(curr_pos.getX() + 3, curr_pos.getY()));
-        }
-        else if (dir == Direction.SOUTH) {
-            this.setPosition(new Position(curr_pos.getX(), curr_pos.getY() - 3));
-        } 
-        else if (dir == Direction.WEST) {
-            this.setPosition(new Position(curr_pos.getX() - 3, curr_pos.getY()));
-        }
     }
 }

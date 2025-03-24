@@ -8,8 +8,6 @@ import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 import org.json.JSONObject;
 
 public class FlyCommand implements Command {
-
-  // default constructor will automatically be present
   
   public JSONObject createRequestJSON() {
     JSONObject request = new JSONObject();
@@ -19,10 +17,22 @@ public class FlyCommand implements Command {
 
   public void applyCommandResult(Drone drone, CommandResult result) {
     // adjust battery level
-    // adjust position (+3 in heading direction)
+    // adjust position (+1 in heading direction)
 
     drone.decreaseBattery(result.getCost());
-    drone.fly();
+
+    Position curr_pos = drone.getPosition();
+
+    if (drone.getDirection() == Direction.NORTH) {
+      drone.setPosition(new Position(curr_pos.getX(), curr_pos.getY() + 3));
+    } else if (drone.getDirection() == Direction.EAST) {
+      drone.setPosition(new Position(curr_pos.getX() + 3, curr_pos.getY()));
+    } else if (drone.getDirection() == Direction.SOUTH) {
+      drone.setPosition(new Position(curr_pos.getX(), curr_pos.getY() - 3));
+    } else if (drone.getDirection() == Direction.WEST) {
+      drone.setPosition(new Position(curr_pos.getX() - 1, curr_pos.getY()));
+    }
+
   }
   
   public CommandOption getCommandType() {
