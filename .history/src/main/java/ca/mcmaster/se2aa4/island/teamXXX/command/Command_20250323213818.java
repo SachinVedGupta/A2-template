@@ -5,6 +5,6 @@ import ca.mcmaster.se2aa4.island.teamXXX.*;
 
 public interface Command {
   public JSONObject createRequestJSON();
-  public void applyCommandResult(Drone drone, CommandResult result);
+  public void applyCommand(Drone drone, Result result);
   public CommandOption getCommandType();
 }
