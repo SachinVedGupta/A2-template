@@ -17,9 +17,5 @@ public class Position {
         return y;
     }
 
-    public Position getPosition() {
-        return new Position(x, y); // avoid leaky abstraction by returning a copy of the position
-    }
-
-
+    
 }

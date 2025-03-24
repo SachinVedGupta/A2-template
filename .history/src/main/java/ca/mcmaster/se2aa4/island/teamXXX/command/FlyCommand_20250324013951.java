@@ -16,17 +16,7 @@ public class FlyCommand implements Command {
 
     drone.decreaseBattery(result.getCost());
 
-    Position curr_pos = drone.getPosition();
-
-    if (drone.getDirection() == Direction.NORTH) {
-      drone.setPosition(new Position(curr_pos.getX(), curr_pos.getY() + 1));
-    } else if (drone.getDirection() == Direction.EAST) {
-      drone.setPosition(new Position(curr_pos.getX() + 1, curr_pos.getY()));
-    } else if (drone.getDirection() == Direction.SOUTH) {
-      drone.setPosition(new Position(curr_pos.getX(), curr_pos.getY() - 1));
-    } else if (drone.getDirection() == Direction.WEST) {
-      drone.setPosition(new Position(curr_pos.getX() - 1, curr_pos.getY()));
-    }
+    if 
 
   }
   
