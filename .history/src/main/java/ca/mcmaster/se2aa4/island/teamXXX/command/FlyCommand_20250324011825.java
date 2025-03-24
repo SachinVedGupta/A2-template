@@ -1,5 +1,5 @@
 package ca.mcmaster.se2aa4.island.teamXXX.command;
-import ca.mcmaster.se2aa4.island.teamXXX.*;
+
 import org.json.JSONObject;
 
 public class FlyCommand implements Command {
@@ -11,13 +11,9 @@ public class FlyCommand implements Command {
   }
 
   public void applyCommandResult(Drone drone, CommandResult result) {
-    // adjust battery level
-    // adjust position (+1 in heading direction)
-
-    drone.decreaseBattery(result.getCost());
-
-    
-
+    drone.setBatteryLevel(drone.getBatteryLevel() - result.getCost());
+    drone.setHeading(result.getHeading());
+    drone.setCreek(result.getCreek());
   }
   
   public CommandOption getCommandType() {

@@ -14,8 +14,4 @@ public class Drone {
     public Direction getDirection() { //Leaky abstraction, refactor later??
         return direction;
     }
-
-    public void decreaseBattery(int cost) {
-        this.battery -= cost;
-    }
 }

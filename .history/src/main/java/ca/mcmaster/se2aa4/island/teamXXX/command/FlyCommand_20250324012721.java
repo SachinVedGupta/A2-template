@@ -14,9 +14,7 @@ public class FlyCommand implements Command {
     // adjust battery level
     // adjust position (+1 in heading direction)
 
-    drone.decreaseBattery(result.getCost());
-
-    
+    drone.decreaseBattery -= result.getCost();
 
   }
   

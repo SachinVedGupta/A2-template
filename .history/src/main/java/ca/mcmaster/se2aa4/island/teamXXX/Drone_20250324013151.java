@@ -15,7 +15,5 @@ public class Drone {
         return direction;
     }
 
-    public void decreaseBattery(int cost) {
-        this.battery -= cost;
-    }
+    public 
 }

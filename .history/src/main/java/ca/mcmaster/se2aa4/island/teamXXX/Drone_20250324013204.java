@@ -16,6 +16,6 @@ public class Drone {
     }
 
     public void decreaseBattery(int cost) {
-        this.battery -= cost;
+        battery -= cost;
     }
 }

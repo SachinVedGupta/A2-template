@@ -16,8 +16,6 @@ public class FlyCommand implements Command {
 
     drone.decreaseBattery(result.getCost());
 
-    
-
   }
   
   public CommandOption getCommandType() {

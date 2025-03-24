@@ -13,11 +13,6 @@ public class FlyCommand implements Command {
   public void applyCommandResult(Drone drone, CommandResult result) {
     // adjust battery level
     // adjust position (+1 in heading direction)
-
-    drone.decreaseBattery(result.getCost());
-
-    
-
   }
   
   public CommandOption getCommandType() {
