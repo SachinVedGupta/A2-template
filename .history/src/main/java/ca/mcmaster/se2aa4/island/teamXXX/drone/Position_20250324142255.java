@@ -45,14 +45,9 @@ public class Position {
         this.poi = poi;
     }
     public POIType getPOI() {
-        if (poi == null) {
-            return null;
-        }
         return poi;
     }
-    public double distanceTo(Position other) {
-        return Math.sqrt(Math.pow(Math.abs(x - other.x), 2) + Math.pow(Math.abs(y - other.y), 2));
-    }
+
 
     @Override
     public String toString() { //Debugging purposes

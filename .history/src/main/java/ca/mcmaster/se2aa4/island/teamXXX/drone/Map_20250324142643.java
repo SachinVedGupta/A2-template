@@ -126,7 +126,7 @@ public class Map {
         double minDistance = -1;
 
         for (POIType creek : creeks) {
-            double distance = creek.getPosition().distanceTo(site.getPosition());
+            double distance = creek.getPosition().distanceTo(site.gesition());
             if (distance < minDistance) {
                 minDistance = distance;
                 closestCreek = creek;

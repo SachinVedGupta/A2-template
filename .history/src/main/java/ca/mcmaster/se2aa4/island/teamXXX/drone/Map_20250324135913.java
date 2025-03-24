@@ -1,6 +1,6 @@
 package ca.mcmaster.se2aa4.island.teamXXX.drone;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.POIType;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
+import ca.mcmaster.se2aa4.island.teamXXX.POIType;
+import ca.mcmaster.se2aa4.island.teamXXX.Position;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -126,7 +126,7 @@ public class Map {
         double minDistance = -1;
 
         for (POIType creek : creeks) {
-            double distance = creek.getPosition().distanceTo(site.getPosition());
+            double distance = creek.position().distanceTo(site.position());
             if (distance < minDistance) {
                 minDistance = distance;
                 closestCreek = creek;

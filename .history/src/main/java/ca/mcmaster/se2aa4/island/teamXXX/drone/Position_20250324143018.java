@@ -51,7 +51,7 @@ public class Position {
         return poi;
     }
     public double distanceTo(Position other) {
-        return Math.sqrt(Math.pow(Math.abs(x - other.x), 2) + Math.pow(Math.abs(y - other.y), 2));
+        return (Math.pow(Math.abs(x - other.x), 2) + Math.pow(Math.abs(y - other.y), 2));
     }
 
     @Override
