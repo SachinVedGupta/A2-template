@@ -4,11 +4,13 @@ public class Position {
     private int x;
     private int y; 
     private TerrainType biome;
+    private POIType poi;
 
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
         biome = TerrainType.UNKNOWN;
+        poi = null;
     }
 
     public int getX() {
@@ -26,6 +28,16 @@ public class Position {
     }
     public Position getPosition() {
         return new Position(x, y); // avoid leaky abstraction by returning a copy of the position
+    }
+    public boolean isWater() {
+        return biome == TerrainType.OCEAN;
+    }
+    public boolean isLand() {
+        return biome != TerrainType.OCEAN && biome != TerrainType.UNKNOWN;
+    }
+    @Override
+    public String toString() { //Debugging purposes
+        return "(" + x + ", " + y + ")";
     }
 
 
