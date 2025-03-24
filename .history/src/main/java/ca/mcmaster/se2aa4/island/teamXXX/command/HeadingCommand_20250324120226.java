@@ -2,8 +2,8 @@ package ca.mcmaster.se2aa4.island.teamXXX.command;
 
 import org.json.JSONObject;
 
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
-import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
+import ca.mcmaster.se2aa4.island.teamXXX.Drone;
+import ca.mcmaster.se2aa4.island.teamXXX.requests.CommandResult;
 
 public class HeadingCommand implements Command {
     public CommandOption getCommandType() {
