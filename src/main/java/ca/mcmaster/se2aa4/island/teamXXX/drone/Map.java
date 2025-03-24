@@ -1,7 +1,4 @@
 package ca.mcmaster.se2aa4.island.teamXXX.drone;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.POIType;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +13,7 @@ public class Map {
     private Position startPosition;
     private List<POIType> creeks;
     private POIType site;
+    private TerrainType[][] terrainGrid;
 
 
     public Map() {
@@ -60,8 +58,8 @@ public class Map {
     }
     
     public boolean isValidPosition(Position position){
-        return position.getX()>=0 || position.getX()<width &&
-               position.getY()>=0 || position.getY()<height;
+        return position.getX() >= 0 && position.getX() < width &&
+               position.getY() >= 0 && position.getY() < height;
     }
 
     public boolean isAtMapBoundary(Position pos) {
@@ -136,9 +134,27 @@ public class Map {
     
     }
     
+    public void initializeGrid() {
+        if (width > 0 && height > 0) {
+            terrainGrid = new TerrainType[width][height];
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
+                    terrainGrid[i][j] = TerrainType.UNKNOWN;
+                }
+            }
+        }
+    }
 
+    public void updateTerrain(Position pos, TerrainType terrain) {
+        if (isValidPosition(pos)) {
+            terrainGrid[pos.getX()][pos.getY()] = terrain;
+        }
+    }
 
-    
-    
-
+    public TerrainType getTerrainAt(Position pos) {
+        if (isValidPosition(pos)) {
+            return terrainGrid[pos.getX()][pos.getY()];
+        }
+        return TerrainType.UNKNOWN;
+    }
 }
