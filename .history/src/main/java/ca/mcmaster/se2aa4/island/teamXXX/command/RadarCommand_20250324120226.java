@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import ca.mcmaster.se2aa4.island.teamXXX.*;
 import ca.mcmaster.se2aa4.island.teamXXX.Direction;
-import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
+import ca.mcmaster.se2aa4.island.teamXXX.requests.CommandResult;
 
 public class RadarCommand implements Command {
     
