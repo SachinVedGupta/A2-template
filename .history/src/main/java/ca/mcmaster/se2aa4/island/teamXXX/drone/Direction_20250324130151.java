@@ -10,15 +10,15 @@ public enum Direction {
     public String toString() {
         switch (this) {
             case NORTH:
-                return "N";
+                return "NORTH";
             case EAST:
-                return "E";
+                return "EAST";
             case SOUTH:
-                return "S";
+                return "SOUTH";
             case WEST:
-                return "W";
+                return "WEST";
             default:
-                return "NONE";
+                return "UNKNOWN";
         }
     }
 }

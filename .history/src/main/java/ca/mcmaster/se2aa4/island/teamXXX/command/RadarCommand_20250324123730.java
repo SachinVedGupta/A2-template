@@ -6,28 +6,33 @@ import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 
-public class HeadingCommand implements Command {
-    private Direction direction; // direction you want to turn
-
-    public HeadingCommand(Direction direction) {
+public class RadarCommand implements Command {
+    
+    private Direction direction;
+    
+    public RadarCommand(Direction direction) {
         this.direction = direction;
     }
-
-    public CommandOption getCommandType() {
-        return CommandOption.HEADING;
-    }
     
+    @Override
+    public CommandOption getCommandType() {
+        return CommandOption.RADAR;
+    }
+
+    @Override
+    public void applyCommandResult(Drone drone, CommandResult result) {
+        drone.decreaseBattery(result.getCost());      
+    }
+
+    @Override
     public JSONObject createRequestJSON() {
         JSONObject request = new JSONObject();
-        request.put("action", "heading");
+        request.put("action", "echo");
         JSONObject parameters = new JSONObject();
         parameters.put("direction", direction.toString());
         request.put("parameters", parameters);
         return request;
     }
 
-    public void applyCommandResult(Drone drone, CommandResult result) {
-        drone.decreaseBattery(result.getCost());
-        drone.changeHeading(direction);
-    }
 }
+

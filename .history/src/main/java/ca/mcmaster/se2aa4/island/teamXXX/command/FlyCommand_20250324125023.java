@@ -8,8 +8,6 @@ import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 import org.json.JSONObject;
 
 public class FlyCommand implements Command {
-
-  // default constructor will automatically be present
   
   public JSONObject createRequestJSON() {
     JSONObject request = new JSONObject();
@@ -22,7 +20,11 @@ public class FlyCommand implements Command {
     // adjust position (+3 in heading direction)
 
     drone.decreaseBattery(result.getCost());
-    drone.fly();
+
+      Position curr_pos = drone.getPosition();
+
+
+
   }
   
   public CommandOption getCommandType() {

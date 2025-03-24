@@ -6,8 +6,7 @@ import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 
 public class StopCommand implements Command {
 
-    // default constructor will automatically be present
-
+    
     @Override
     public CommandOption getCommandType() {
         return CommandOption.STOP;

@@ -16,9 +16,9 @@ public enum Direction {
             case SOUTH:
                 return "S";
             case WEST:
-                return "W";
+                return "WEST";
             default:
-                return "NONE";
+                return "UNKNOWN";
         }
     }
 }
