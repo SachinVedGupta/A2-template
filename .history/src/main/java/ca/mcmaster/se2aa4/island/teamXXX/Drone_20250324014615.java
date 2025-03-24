@@ -19,7 +19,6 @@ public class Drone {
     public void setPosition(Position position) {
         this.position = position;
     }
-    
     public Position getPosition() {
         return position;
     }

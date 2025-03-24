@@ -16,13 +16,7 @@ public class Drone {
         return direction;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-    
-    public Position getPosition() {
-        return position;
-    }
+    public void setPosition()
 
     public void decreaseBattery(int cost) {
         this.battery -= cost;
