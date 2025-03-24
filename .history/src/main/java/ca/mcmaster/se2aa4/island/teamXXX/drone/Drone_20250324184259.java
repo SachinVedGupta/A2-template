@@ -64,7 +64,7 @@ public class Drone {
                     return;
                 }
                 position.setX(position.getX() - 3);
-                position.setY(position.getY() - 3 * ((heading == Direction.NORTH) ? -1 : 1));
+                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
                 break;
         }
         direction = heading;

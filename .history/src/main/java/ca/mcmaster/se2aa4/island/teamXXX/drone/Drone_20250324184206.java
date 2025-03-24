@@ -50,13 +50,13 @@ public class Drone {
                     return;
                 }
                 position.setX(position.getX() + 3);
-                position.setY(position.getY() - 3 * ((heading == Direction.NORTH) ? -1 : 1));
+                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
                 break;
             case SOUTH:
                 if (heading == Direction.NORTH || heading == Direction.SOUTH) {
                     return;
                 }
-                position.setY(position.getY() - 3);
+                position.setY(position.getY() + 3);
                 position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? -1 : 1));
                 break;
             case WEST:
@@ -64,7 +64,7 @@ public class Drone {
                     return;
                 }
                 position.setX(position.getX() - 3);
-                position.setY(position.getY() - 3 * ((heading == Direction.NORTH) ? -1 : 1));
+                position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
                 break;
         }
         direction = heading;
