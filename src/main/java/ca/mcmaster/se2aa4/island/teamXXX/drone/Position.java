@@ -39,6 +39,8 @@ public class Position {
     public String toString() { //Debugging purposes
         return "(" + x + ", " + y + ")";
     }
-
-
+    
+    public void setBiome(TerrainType biome) {
+        this.biome = biome;
+    }
 }
