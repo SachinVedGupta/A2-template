@@ -30,18 +30,30 @@ public class Drone {
     public void changeHeading(Direction heading) {
         switch (direction) {
             case NORTH:
+                if (heading == Direction.SOUTH || heading == Direction.NORTH) {
+                    return;
+                }
                 position.setY(position.getY() - 3);
                 position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? -1 : 1));
                 break;
             case EAST:
+                if (heading == Direction.WEST || heading == Direction.EAST) {
+                    return;
+                }
                 position.setX(position.getX() + 3);
                 position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
                 break;
             case SOUTH:
+                if (heading == Direction.NORTH || heading == Direction.SOUTH) {
+                    return;
+                }
                 position.setY(position.getY() + 3);
                 position.setX(position.getX() + 3 * ((heading == Direction.WEST) ? -1 : 1));
                 break;
             case WEST:
+                if (heading == Direction.EAST || heading == Direction.WEST) {
+                    return;
+                }
                 position.setX(position.getX() - 3);
                 position.setY(position.getY() + 3 * ((heading == Direction.NORTH) ? -1 : 1));
                 break;
