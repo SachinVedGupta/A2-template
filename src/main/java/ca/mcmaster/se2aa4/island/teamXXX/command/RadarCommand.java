@@ -20,8 +20,7 @@ public class RadarCommand implements Command {
 
     @Override
     public void applyCommandResult(Drone drone, CommandResult result) {
-        drone.decreaseBattery(result.getCost()); 
-        drone.changeHeading(result.getDirection());       
+        drone.decreaseBattery(result.getCost());      
     }
 
     @Override
