@@ -1,5 +1,7 @@
 package ca.mcmaster.se2aa4.island.teamXXX.command;
 import ca.mcmaster.se2aa4.island.teamXXX.*;
+import ca.mcmaster.se2aa4.island.teamXXX.requests.CommandResult;
+
 import org.json.JSONObject;
 
 public class FlyCommand implements Command {

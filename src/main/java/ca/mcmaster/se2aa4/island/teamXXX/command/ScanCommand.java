@@ -1,6 +1,7 @@
 package ca.mcmaster.se2aa4.island.teamXXX.command;
 import org.json.JSONObject;
 import ca.mcmaster.se2aa4.island.teamXXX.*;
+import ca.mcmaster.se2aa4.island.teamXXX.requests.CommandResult;
 
 public class ScanCommand implements Command {
     @Override
