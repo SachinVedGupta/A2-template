@@ -35,12 +35,11 @@ public class Position {
     public boolean isLand() {
         return biome != TerrainType.OCEAN && biome != TerrainType.UNKNOWN;
     }
+    public void setBiome(TerrainType biome) {
+        this.biome = biome;
+    }
     @Override
     public String toString() { //Debugging purposes
         return "(" + x + ", " + y + ")";
-    }
-    
-    public void setBiome(TerrainType biome) {
-        this.biome = biome;
     }
 }
