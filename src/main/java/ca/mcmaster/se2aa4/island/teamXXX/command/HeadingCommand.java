@@ -2,10 +2,16 @@ package ca.mcmaster.se2aa4.island.teamXXX.command;
 
 import org.json.JSONObject;
 
+import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 
 public class HeadingCommand implements Command {
+    private Direction direction;
+
+    public HeadingCommand(Direction direction) {
+        this.direction = direction;
+    }
     public CommandOption getCommandType() {
         return CommandOption.HEADING;
     }
@@ -18,6 +24,6 @@ public class HeadingCommand implements Command {
 
     public void applyCommandResult(Drone drone, CommandResult result) {
         drone.decreaseBattery(result.getCost());
-        drone.changeHeading(result.getDirection());
+        drone.changeHeading(direction);
     }
 }
