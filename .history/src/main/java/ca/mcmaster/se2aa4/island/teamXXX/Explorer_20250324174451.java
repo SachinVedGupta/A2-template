@@ -7,11 +7,11 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import com.vividsolutions.jts.geomgraph.Position;
+
+
 import ca.mcmaster.se2aa4.island.teamXXX.algorithm.mvp.*;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Map;
+
 import eu.ace_design.island.bot.IExplorerRaid;
 
 public class Explorer implements IExplorerRaid {
@@ -29,9 +29,13 @@ public class Explorer implements IExplorerRaid {
         Integer batteryLevel = info.getInt("budget");
         logger.info("The drone is facing {}", direction);
         logger.info("Battery level is {}", batteryLevel);
+        int x = 1;
+        int y = 1;
+        Position start = new Position(x, y);
+        start.setX(0);
 
-        drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(1, 1), new Map());
-        algorithm = new BasicAlgo(drone);
+        drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(), new Map());
+
     }
 
     @Override
@@ -53,7 +57,6 @@ public class Explorer implements IExplorerRaid {
         logger.info("The status of the drone is {}", status);
         JSONObject extraInfo = response.getJSONObject("extras");
         logger.info("Additional information received: {}", extraInfo);
-        Position position = new Position(1, 1);
     }
 
     @Override

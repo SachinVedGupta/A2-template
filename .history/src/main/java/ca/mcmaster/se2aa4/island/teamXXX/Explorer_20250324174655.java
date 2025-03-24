@@ -11,7 +11,6 @@ import ca.mcmaster.se2aa4.island.teamXXX.algorithm.mvp.*;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Map;
 import eu.ace_design.island.bot.IExplorerRaid;
 
 public class Explorer implements IExplorerRaid {
@@ -29,9 +28,11 @@ public class Explorer implements IExplorerRaid {
         Integer batteryLevel = info.getInt("budget");
         logger.info("The drone is facing {}", direction);
         logger.info("Battery level is {}", batteryLevel);
+        int x = 1;
+        int y = 1;
 
-        drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(1, 1), new Map());
-        algorithm = new BasicAlgo(drone);
+        drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(), new Map());
+
     }
 
     @Override

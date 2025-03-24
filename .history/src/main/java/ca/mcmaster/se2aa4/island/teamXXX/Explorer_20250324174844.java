@@ -31,7 +31,7 @@ public class Explorer implements IExplorerRaid {
         logger.info("Battery level is {}", batteryLevel);
 
         drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(1, 1), new Map());
-        algorithm = new BasicAlgo(drone);
+        algorithm = new BasicAlgo(drone
     }
 
     @Override
