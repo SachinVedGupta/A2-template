@@ -12,7 +12,7 @@ import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Map;
-import ca.mcmaster.se2aa4.island.teamXXX.results.*;
+import ca.mcmaster.se2aa4.island.teamXXX.re
 import eu.ace_design.island.bot.IExplorerRaid;
 
 
@@ -54,6 +54,7 @@ public class Explorer implements IExplorerRaid {
         logger.info("The status of the drone is {}", status);
         JSONObject extraInfo = response.getJSONObject("extras");
         logger.info("Additional information received: {}", extraInfo);
+        Position position = new Position(1, 1);
 
         try {
             algorithm.acknowledgeResults(new CommandResult(response));

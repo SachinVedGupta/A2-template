@@ -25,7 +25,7 @@ public abstract class BasicAlgo {
     }
 
     public void acknowledgeResults(CommandResult s) {
-        state = state.getNextState(s);
+        state = state.nextState(s);
     }
 
     protected abstract State getStartState(Drone drone);

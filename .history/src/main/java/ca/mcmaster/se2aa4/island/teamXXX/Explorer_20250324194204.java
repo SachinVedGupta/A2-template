@@ -12,9 +12,7 @@ import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Map;
-import ca.mcmaster.se2aa4.island.teamXXX.results.*;
 import eu.ace_design.island.bot.IExplorerRaid;
-
 
 public class Explorer implements IExplorerRaid {
 
@@ -54,9 +52,16 @@ public class Explorer implements IExplorerRaid {
         logger.info("The status of the drone is {}", status);
         JSONObject extraInfo = response.getJSONObject("extras");
         logger.info("Additional information received: {}", extraInfo);
+        Position position = new Position(1, 1);
+
+
+
+        JSONObject extraInfo = response.getJSONObject("extras");
+        logger.info("Additional information received: {}", extraInfo);
+        logger.info("Drone battery level is now {}", drone.getBatteryLevel());
 
         try {
-            algorithm.acknowledgeResults(new CommandResult(response));
+            algorithm.acknowledgeResults(new ActionResult(response));
         } catch (Exception e) {
             logger.error("Error in acknowledgeResults: {}", e);
             throw e;

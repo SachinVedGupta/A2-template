@@ -21,14 +21,14 @@ public class ForwardState extends State {
 
     @Override
     public Command getNextCommand() {
-      if (drone.getCurrentBiome() == "GROUND") {
-        return drone.giveCommand(CommandOption.STOP);
-      }
-      else if (command.getCommandType() == CommandOption.FLY) {
+      if (command.getCommandType() == CommandOption.FLY) {
         return drone.giveCommand(CommandOption.SCAN);
       }
-      else  {
+      else if {
         return drone.giveCommand(CommandOption.FLY);
+      }
+      else (drone.getCurrentBiome() == "GROUND") {
+        return drone.giveCommand(CommandOption.STOP);
       }
     }
 }
