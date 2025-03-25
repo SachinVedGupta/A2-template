@@ -34,7 +34,7 @@ public class ForwardState extends State {
           return getDrone().giveCommand(CommandOption.SCAN);
         }
         else  {
-          command = CommandFactory.createCommand(CommandOption.FLY);
+          command = CommandFactory.createCommand(CommandOption.SCAN);
           return getDrone().giveCommand(CommandOption.FLY);
         }
     }

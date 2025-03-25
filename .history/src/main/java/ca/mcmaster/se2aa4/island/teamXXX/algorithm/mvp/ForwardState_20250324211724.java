@@ -30,11 +30,9 @@ public class ForwardState extends State {
         logger.info("HERE NOW");
         logger.info("1=1");
         if (command.getCommandType() == CommandOption.FLY) {
-          command = CommandFactory.createCommand(CommandOption.SCAN);
           return getDrone().giveCommand(CommandOption.SCAN);
         }
         else  {
-          command = CommandFactory.createCommand(CommandOption.FLY);
           return getDrone().giveCommand(CommandOption.FLY);
         }
     }

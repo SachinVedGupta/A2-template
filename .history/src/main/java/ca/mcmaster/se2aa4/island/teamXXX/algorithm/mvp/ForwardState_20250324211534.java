@@ -11,7 +11,7 @@ import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 
 
 public class ForwardState extends State {
-    private Command command = CommandFactory.createCommand(CommandOption.FLY);
+    private Command command = CommandFactor;
     private final Logger logger = LogManager.getLogger();
 
 
@@ -29,12 +29,13 @@ public class ForwardState extends State {
     public Command getNextCommand() {
         logger.info("HERE NOW");
         logger.info("1=1");
-        if (command.getCommandType() == CommandOption.FLY) {
-          command = CommandFactory.createCommand(CommandOption.SCAN);
+        if (getDrone().getCurrentBiome() == "GROUND") {
+          return getDrone().giveCommand(CommandOption.STOP);
+        }
+        else if (command.getCommandType() == CommandOption.FLY) {
           return getDrone().giveCommand(CommandOption.SCAN);
         }
         else  {
-          command = CommandFactory.createCommand(CommandOption.FLY);
           return getDrone().giveCommand(CommandOption.FLY);
         }
     }
