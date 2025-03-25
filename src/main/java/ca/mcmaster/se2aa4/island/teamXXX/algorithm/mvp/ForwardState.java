@@ -1,13 +1,15 @@
 package ca.mcmaster.se2aa4.island.teamXXX.algorithm.mvp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import ca.mcmaster.se2aa4.island.teamXXX.command.Command;
+import ca.mcmaster.se2aa4.island.teamXXX.command.CommandOption;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
-import ca.mcmaster.se2aa4.island.teamXXX.command.*;
-import org.apache.logging.log4j.*;
 
 
 public class ForwardState extends State {
     private Command command;
-    public Drone drone;
     private final Logger logger = LogManager.getLogger();
 
 
@@ -23,10 +25,8 @@ public class ForwardState extends State {
 
     @Override
     public Command getNextCommand() {
-
-      logger.info("HERE NOW");
-      logger.info("1=1");
-      return drone.giveCommand(CommandOption.FLY);
-
+        logger.info("HERE NOW");
+        logger.info("1=1");
+        return getDrone().giveCommand(CommandOption.FLY);
     }
 }

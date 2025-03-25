@@ -1,12 +1,14 @@
 package ca.mcmaster.se2aa4.island.teamXXX.command;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
-import org.apache.logging.log4j.*;
 
 public class CommandFactory {
   private static final Logger logger = LogManager.getLogger();
   public static Command createCommand(CommandOption option) {
     switch (option) {
-      case CommandOption.FLY:
+      case FLY:
         logger.info("Calling new FlyCommand()");
         return new FlyCommand();
       case CommandOption.SCAN:
