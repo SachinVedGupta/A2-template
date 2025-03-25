@@ -1,13 +1,10 @@
 package ca.mcmaster.se2aa4.island.teamXXX.command;
-import ca.mcmaster.se2aa4.island.teamXXX.*;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
-import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
-
-import org.json.JSONObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
+
+import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
+import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 
 public class FlyCommand implements Command {
 

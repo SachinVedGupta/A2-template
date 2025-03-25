@@ -7,13 +7,12 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import ca.mcmaster.se2aa4.island.teamXXX.algorithm.mvp.*;
-import ca.mcmaster.se2aa4.island.teamXXX.command.CommandOption;
+import ca.mcmaster.se2aa4.island.teamXXX.algorithm.mvp.Algorithm;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Direction;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
-import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Map;
-import ca.mcmaster.se2aa4.island.teamXXX.results.*;
+import ca.mcmaster.se2aa4.island.teamXXX.drone.Position;
+import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 import eu.ace_design.island.bot.IExplorerRaid;
 
 
@@ -68,7 +67,16 @@ public class Explorer implements IExplorerRaid {
 
     @Override
     public String deliverFinalReport() {
-        return "no creek found";
+        String finalReport = null;
+        try {
+            finalReport = algorithm.deliverFinalReport();
+        } catch (Exception e) {
+            logger.error("Error in deliverFinalReport: {}", e);
+            throw new RuntimeException(e);
+        }
+        logger.info("** Final report: {}", finalReport);
+        return finalReport;
+
     }
 
 }

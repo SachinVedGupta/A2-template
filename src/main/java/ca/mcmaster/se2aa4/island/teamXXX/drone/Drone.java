@@ -1,10 +1,13 @@
 package ca.mcmaster.se2aa4.island.teamXXX.drone;
-import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
-import ca.mcmaster.se2aa4.island.teamXXX.results.ScanResult;
-import ca.mcmaster.se2aa4.island.teamXXX.command.*;
-import org.json.JSONObject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
-import org.apache.logging.log4j.*;
+import org.json.JSONObject;
+
+import ca.mcmaster.se2aa4.island.teamXXX.command.Command;
+import ca.mcmaster.se2aa4.island.teamXXX.command.CommandFactory;
+import ca.mcmaster.se2aa4.island.teamXXX.command.CommandOption;
+import ca.mcmaster.se2aa4.island.teamXXX.results.ScanResult;
 
 public class Drone {
     private Direction direction;
@@ -105,29 +108,37 @@ public class Drone {
     public Map getMap() {
         return map;
     }
+
     public int getBattery() {
         return battery;
     }
 
     public void scanIntoMap(ScanResult result) {
-        JSONArray creeks = result.getCreeks();
-        JSONArray sites = result.getSites();
+        // Update the map with the current biome from the scan
+        String currentBiome = (result.getBiomes().length() > 0)
+            ? result.getBiomes().getString(0) : "OCEAN";
+        // Assumes TerrainType enum names match the biome in uppercase
+        map.updateTerrain(position, TerrainType.valueOf(currentBiome.toUpperCase()));
+        
+        // Store result for later use (e.g. getCurrentBiome())
         prevScanResult = result;
-    
+        
+        // Process detected creeks from scan extras (if any)
+        JSONArray creeks = result.getCreeks();
         for (int i = 0; i < creeks.length(); i++) {
             JSONObject creekJson = creeks.getJSONObject(i);
             POIType creek = POIType.CREEK;
-            Position creekPosition = position;
-            creek.setPosition(creekPosition);
+            creek.setPosition(position);
             creek.setUID(creekJson.toString());
             map.addPointOfInterest(creek);
         }
-    
+        
+        // Process detected emergency sites from scan extras (if any)
+        JSONArray sites = result.getSites();
         for (int i = 0; i < sites.length(); i++) {
             JSONObject siteJson = sites.getJSONObject(i);
             POIType site = POIType.EMERGENCY_SITE;
-            Position sitePosition = position;
-            site.setPosition(sitePosition);
+            site.setPosition(position);
             site.setUID(siteJson.toString());
             map.addPointOfInterest(site);
         }
