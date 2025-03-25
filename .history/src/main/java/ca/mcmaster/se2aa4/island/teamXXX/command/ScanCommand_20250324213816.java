@@ -23,7 +23,8 @@ public class ScanCommand implements Command {
 
     public void applyCommandResult(Drone drone, ScanResult result) {
         drone.decreaseBattery(result.getCost());  
-        drone.scanIntoMap(result);      
+        //drone.scanIntoMap(result);      
+        System.out.println("h");
     }
 
     @Override

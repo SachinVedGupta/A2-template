@@ -35,7 +35,7 @@ public class ForwardState extends State {
         }
         else  {
           command = CommandFactory.createCommand(CommandOption.FLY);
-          logger.info("New position after fly: {}", getDrone().getPosition());
+          logger.info("New position after fly: {}", this.getPosition());
           return getDrone().giveCommand(CommandOption.FLY);
         }
     }

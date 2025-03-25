@@ -3,7 +3,6 @@ import org.json.JSONObject;
 
 import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
-import ca.mcmaster.se2aa4.island.teamXXX.results.ScanResult;
 
 public class ScanCommand implements Command {
     
@@ -19,11 +18,6 @@ public class ScanCommand implements Command {
         drone.decreaseBattery(result.getCost());  
         //drone.scanIntoMap(result);      
         System.out.println("h");
-    }
-
-    public void applyCommandResult(Drone drone, ScanResult result) {
-        drone.decreaseBattery(result.getCost());  
-        drone.scanIntoMap(result);      
     }
 
     @Override

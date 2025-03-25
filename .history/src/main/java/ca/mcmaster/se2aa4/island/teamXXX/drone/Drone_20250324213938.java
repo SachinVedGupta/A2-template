@@ -105,6 +105,8 @@ public class Drone {
     public Map getMap() {
         return map;
     }
+    }
+
     public int getBattery() {
         return battery;
     }

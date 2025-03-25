@@ -90,6 +90,8 @@ public class Drone {
         else if (dir == Direction.WEST) {
             this.setPosition(new Position(curr_pos.getX() - 3, curr_pos.getY()));
         }
+
+        logger.info("New position after fly: {}");
     }
 
     public Command giveCommand(CommandOption command, Direction direction) {
