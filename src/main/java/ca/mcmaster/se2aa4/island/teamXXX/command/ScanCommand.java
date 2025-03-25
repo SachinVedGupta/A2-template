@@ -22,7 +22,7 @@ public class ScanCommand implements Command {
     @Override
     public JSONObject createRequestJSON() {
         JSONObject request = new JSONObject();
-        request.put("command", "scan");
+        request.put("action", "scan");
         return request;
     }
   
