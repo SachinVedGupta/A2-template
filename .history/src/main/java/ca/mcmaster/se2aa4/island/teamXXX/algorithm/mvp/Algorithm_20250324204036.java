@@ -6,14 +6,17 @@ import ca.mcmaster.se2aa4.island.teamXXX.drone.Drone;
 import eu.ace_design.island.arena.exporters.MapInfo;
 import ca.mcmaster.se2aa4.island.teamXXX.results.CommandResult;
 import ca.mcmaster.se2aa4.island.teamXXX.command.Command;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public abstract class BasicAlgo {
+public class Algorithm {
   private Drone drone;
-  private State state;
+  protected State state;
+  private final Logger logger = LogManager.getLogger();
 
-    public BasicAlgo(Drone drone) {
+    public Algorithm(Drone drone) {
       this.drone = drone;
-      this.state = getStartState(drone);
+      state = getStartState(drone);
     }
 
     public Drone getDrone() {
@@ -21,12 +24,16 @@ public abstract class BasicAlgo {
     }
 
     public Command takeDecision() {
+        logger.info("TAKE DECISION IN BASIC ALGO");
         return state.getNextCommand();
+
     }
 
     public void acknowledgeResults(CommandResult s) {
         state = state.getNextState(s);
     }
 
-    protected abstract State getStartState(Drone drone);
+    protected State getStartState(Drone drone) {
+      return new ForwardState(drone);
+  }
 }
