@@ -32,7 +32,7 @@ public class Explorer implements IExplorerRaid {
         logger.info("The drone is facing {}", direction);
         logger.info("Battery level is {}", batteryLevel);
 
-        drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(1, 1), new Map());
+        drone = new Drone(Direction.fromString(direction), batteryLevel, new Position(100, 100), new Map());
         algorithm = new Algorithm(drone);
         logger.info("** Initialization complete");
     }

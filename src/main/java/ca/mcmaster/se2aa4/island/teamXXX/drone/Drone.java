@@ -78,21 +78,23 @@ public class Drone {
         direction = heading;
     }
     public void fly() {
-        Position curr_pos = this.getPosition();
-        Direction dir = this.getDirection();
-
-        if (dir == Direction.NORTH) {
-            this.setPosition(new Position(curr_pos.getX(), curr_pos.getY() + 3));
+        // Move 3 units in the current heading direction.
+        switch(direction) {
+            case NORTH:
+                position.setY(position.getY() - 3);
+                break;
+            case SOUTH:
+                position.setY(position.getY() + 3);
+                break;
+            case EAST:
+                position.setX(position.getX() + 3);
+                break;
+            case WEST:
+                position.setX(position.getX() - 3);
+                break;
         }
-        else if (dir == Direction.EAST) {
-            this.setPosition(new Position(curr_pos.getX() + 3, curr_pos.getY()));
-        }
-        else if (dir == Direction.SOUTH) {
-            this.setPosition(new Position(curr_pos.getX(), curr_pos.getY() - 3));
-        } 
-        else if (dir == Direction.WEST) {
-            this.setPosition(new Position(curr_pos.getX() - 3, curr_pos.getY()));
-        }
+        // Register the new position in the map
+        map.addPosition(position.getPosition());
     }
 
     public Command giveCommand(CommandOption command, Direction direction) {
@@ -114,31 +116,33 @@ public class Drone {
     }
 
     public void scanIntoMap(ScanResult result) {
-        // Update the map with the current biome from the scan
-        String currentBiome = (result.getBiomes().length() > 0)
-            ? result.getBiomes().getString(0) : "OCEAN";
-        // Assumes TerrainType enum names match the biome in uppercase
+        // Update the terrain using the scanned biome.
+        String currentBiome = (result.getBiomes().length() > 0) 
+                ? result.getBiomes().getString(0) : "OCEAN";
+        // Update the current position's biome so subsequent scans are aware of the change.
+        position.setBiome(TerrainType.valueOf(currentBiome.toUpperCase()));
         map.updateTerrain(position, TerrainType.valueOf(currentBiome.toUpperCase()));
         
-        // Store result for later use (e.g. getCurrentBiome())
+        // Store the result for later use (e.g. getCurrentBiome())
         prevScanResult = result;
         
-        // Process detected creeks from scan extras (if any)
+        // Process detected creeks from the scan (if any)
         JSONArray creeks = result.getCreeks();
         for (int i = 0; i < creeks.length(); i++) {
             JSONObject creekJson = creeks.getJSONObject(i);
+            // Create a new Position copy for uniqueness.
             POIType creek = POIType.CREEK;
-            creek.setPosition(position);
+            creek.setPosition(new Position(position.getX(), position.getY()));
             creek.setUID(creekJson.toString());
             map.addPointOfInterest(creek);
         }
         
-        // Process detected emergency sites from scan extras (if any)
+        // Process detected emergency sites similarly
         JSONArray sites = result.getSites();
         for (int i = 0; i < sites.length(); i++) {
             JSONObject siteJson = sites.getJSONObject(i);
             POIType site = POIType.EMERGENCY_SITE;
-            site.setPosition(position);
+            site.setPosition(new Position(position.getX(), position.getY()));
             site.setUID(siteJson.toString());
             map.addPointOfInterest(site);
         }

@@ -29,20 +29,16 @@ public class ForwardState extends State {
 
     @Override
     public Command getNextCommand() {
-        String currentBiome = getDrone().getCurrentBiome();
-        // If the drone is now over land, change behavior (e.g. scan more or stop flying)
-        if (!"OCEAN".equalsIgnoreCase(currentBiome)) {
-            // Option: Issue a scan to further examine the terrain
+        String biome = getDrone().getCurrentBiome();
+        if ("NONE".equalsIgnoreCase(biome)) {
+            logger.info("No biome info available. Initiating scan to update terrain.");
             return getDrone().giveCommand(CommandOption.SCAN);
-        }
-        
-        // Otherwise, alternately fly and scan as before
-        if (command.getCommandType() == CommandOption.FLY) {
-            command = CommandFactory.createCommand(CommandOption.SCAN);
-            return getDrone().giveCommand(CommandOption.SCAN);
-        } else {
-            command = CommandFactory.createCommand(CommandOption.FLY);
+        } else if ("OCEAN".equalsIgnoreCase(biome)) {
+            logger.info("Biome is still OCEAN. Continue flying.");
             return getDrone().giveCommand(CommandOption.FLY);
+        } else {
+            logger.info("Non-OCEAN biome detected (" + biome + "). Initiating scan for POIs.");
+            return getDrone().giveCommand(CommandOption.SCAN);
         }
     }
 }
